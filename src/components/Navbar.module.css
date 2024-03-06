@@ -1,8 +1,38 @@
+.container {
+    background-color:#282A40 ;
+    border-radius: 0 0 20px 20px;
+    padding-bottom:10px ;
+}
 .navbarUl {
-    display: flex;
     list-style: none;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 .logo {
     width: 50px;
+    margin-top: 10px;
+    transition: all .15s ease-in;
+
+}
+.logo:hover {
+    scale: 115%;
+}
+.navbarUl li {
+    color: #fff;
+    margin: 0 40px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all .15s ease-in;
+}
+.links {
+    display: flex;
+    align-items: center;
+}
+.links span {
+    margin: 0 10px;
+}
+.links:hover {
+    scale: 110%;
 }
