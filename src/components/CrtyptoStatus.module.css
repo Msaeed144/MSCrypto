@@ -18,6 +18,30 @@
 } 
 .table th {
     font-size: 1rem;
-    text-align: left;
     padding: 10px 0;
+}
+.heartIcon {
+    font-size: 1.5rem !important;
+    text-align: right;
+
+}
+.table tbody tr {
+    height: 80px;
+    border-bottom: 1px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.symbol {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.symbol img {
+    width: 25px;
+    height: 25px;
+    margin-right:10px ;
+}
+.thC {
+    text-align: right;
+    
 }

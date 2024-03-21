@@ -1,0 +1,8 @@
+.tdContainer {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+img {
+    margin-left: 10px;
+}
