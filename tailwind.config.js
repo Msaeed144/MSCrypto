@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      iranyekan: ["iranyekan"],
+      iranyekan1: ["iranyekan2"],
+      iranyekan2: ["iranyekan2"],
+    },
+
     extend: {},
   },
   plugins: [],
+  
 }
