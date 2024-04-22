@@ -1,6 +1,6 @@
-/* eslint-disable react-refresh/only-export-components */
-// CryptoContext.tsx
-import { createContext, useContext, useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode, createContext, useEffect, useState } from "react";
 import api from "../services/config";
 
 export interface SymbolStats {
@@ -28,6 +28,7 @@ export interface SymbolStats {
 }
 
 export interface SymbolObject {
+  [x: string]: any;
   symbol: string;
   baseAsset: string;
   baseAsset_png_icon: string;
@@ -53,40 +54,65 @@ export interface SymbolObject {
   isZeroFee: boolean;
 }
 
-interface Result {
-  symbols: {
+export interface Result {
+  data: {
     [key: string]: SymbolObject;
   };
   message: string;
   success: boolean;
 }
 
-export interface ApiResponse {
-  result: Result;
+export type stateI = SymbolObject[] | undefined;
+export interface contextType {
+  cryptos: stateI;
+  payment: string;
+  setPayment: React.Dispatch<React.SetStateAction<string>>;
+  search:string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
+export interface ContextProps {
+  symbols: SymbolObject[];
+}
+export type ChildrenProviderProps = {
+  children: ReactNode;
+};
 
-export const CryptosContext = createContext<ApiResponse | undefined>(undefined);
 
-export function CryptoProvider({ children }: { children: React.ReactNode }) {
-  const [cryptos, setCryptos] = useState<ApiResponse | undefined>(undefined);
 
+export const CryptosContext = createContext({} as contextType);
+
+function CryptosProvider({ children }: ChildrenProviderProps) {
+  const [ payment , setPayment ] = useState<string>("TMN")
+  const [ search , setSearch ] = useState<string>("")
+  const [cryptos, setCryptos] = useState<stateI>(undefined);
   useEffect(() => {
     const fetchCryptos = async () => {
       try {
-        const response = await api.get("/markets");
-        setCryptos(response.data);
-      } catch (error) {
-        console.error("Error fetching cryptos:", error);
+        const response: Result = await api.get("/markets");
+        const data = response.data;
+        const result = data.result.symbols;
+        const cryptosArray = Object.entries(result).map(([key, value]) => value as SymbolObject);
+        if (response) {
+          setCryptos(cryptosArray);
+        }
+      } catch (error: any) {
+        console.log(error.message);
       }
     };
-
     fetchCryptos();
-
   }, []);
+  const contextValue: contextType = {
+    cryptos: cryptos,
+    payment: payment,
+    setPayment: setPayment,
+    search:search,
+    setSearch:setSearch
+  };
   return (
-    <CryptosContext.Provider value={cryptos}>
+<CryptosContext.Provider value={contextValue}>
       {children}
     </CryptosContext.Provider>
   );
 }
 
+export default CryptosProvider;

@@ -1,6 +1,6 @@
 // App.tsx
 import { Routes , Route } from "react-router-dom";
-import { CryptoProvider } from "./context/CryptoContext";
+import CryptosProvider from "./context/CryptoContext";
 
 import Home from "./pages/Home";
 import Changer from "./pages/Changer";
@@ -11,14 +11,14 @@ function App() {
   
   return (
     
-    <CryptoProvider>
+    <CryptosProvider>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/transformer" element={<Changer />} />
         <Route path="/aboutus" element={<About />} /> 
       </Routes>
-    </CryptoProvider>
+    </CryptosProvider>
   )
 }
 
