@@ -170,7 +170,9 @@ const transferHandler = () =>{
       </div>
     </div>
     ):(
+      <div className="mt-8">
       <Audio height="80" width="80" color="white" ariaLabel="loading" />
+      </div>
     )}
     </>
   );
