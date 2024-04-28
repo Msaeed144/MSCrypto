@@ -12,7 +12,7 @@ function Navbar() {
                 </button>
                 <nav className="flex justify-between" aria-label="main">
                     <Link to="/" className="hover:opacity-90 cursor-pointer mx-8">خانه</Link>
-                    <Link to="/transformer" className="hover:opacity-90 cursor-pointer mx-8">مبدل</Link>
+                    <Link to="/transformer" className="hover:opacity-90 cursor-pointer mx-8">تبدیل نرخ ارز</Link>
                     <Link to="/aboutus" className="hover:opacity-90 cursor-pointer mx-8">درباره ما</Link>
                 </nav>
             </div>
