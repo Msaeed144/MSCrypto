@@ -1,6 +1,6 @@
 const fixNum = (number:string) => {
     const newNum:number = parseFloat(number)
-    return newNum.toFixed(0)
+    return newNum.toFixed(5)
 }
 const replaceDigits = (str: string): string => {
     const persianDigits: string[] = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
