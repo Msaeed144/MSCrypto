@@ -2,10 +2,11 @@
 import { CryptosContext , contextType } from "../context/CryptoContext";
 import { useContext  ,ChangeEvent} from "react";
 function FilterBar() {
-  const { setPayment , setSearch} = useContext<contextType>(CryptosContext)
+  const { setPayment , setSearch , payment} = useContext<contextType>(CryptosContext)
   const selectHandler = (event:ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     setPayment(value)
+    console.log(payment)
   }
   const searchHandler = (event:ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
